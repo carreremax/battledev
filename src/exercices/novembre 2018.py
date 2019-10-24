@@ -1,6 +1,5 @@
 
 
-print(ord('a'))
 
 #EXERcice 2
 import sys
@@ -12,7 +11,6 @@ for line in sys.stdin:
 def is_voyelle(l):
     end_letter = ['a', 'e', 'i', 'o', 'u', 'y']
     return l in end_letter
-
 
 def mot_magique(word):
     if 5 <= len(word) <= 7:

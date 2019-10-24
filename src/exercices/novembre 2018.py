@@ -30,4 +30,26 @@ for word in lines[1:]:
         words_seen.append(word)
 print(nb_word)
 
-#
+# exercice 3
+
+import sys
+
+lines = []
+for line in sys.stdin:
+    lines.append(line.rstrip('\n'))
+
+N = int(lines[0])
+target = N / 2
+x = 0
+vals = [int(i) for i in lines[1].split()]
+for i in range(len(vals[:-1])):
+    val = vals[i]
+    val_n = vals[i + 1]
+    if val == target and val_n == target:
+        x = "INF"
+        break
+    if val == target or (val < target and val_n > target) or (val > target and val_n < target):
+        x += 1
+if val_n == target and (x != "INF"):
+    x += 1
+print(x)

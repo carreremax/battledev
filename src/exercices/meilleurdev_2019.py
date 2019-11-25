@@ -24,3 +24,24 @@ for l in lines[1:]:
 print(nb_traj)
 
 # Exercice 3
+import sys
+
+lines = []
+for line in sys.stdin:
+	lines.append(line.rstrip('\n'))
+
+prim_nb = [2,3,5,7,11]
+res = set()
+for i in lines[1:]:
+    val = int(i)
+    for col in prim_nb:
+        if val%col ==0:
+            res.add(col)
+res = list(res)
+res.sort()
+ret = ""
+for val in res:
+    ret = ret+str(val)+" "
+print(ret)
+
+# exercice 4

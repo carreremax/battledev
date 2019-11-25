@@ -45,3 +45,31 @@ for val in res:
 print(ret)
 
 # exercice 4
+import sys
+
+
+def DEBUG(to_print):
+    sys.stderr.write(str(to_print) + '\n')
+
+
+lines = []
+for line in sys.stdin:
+    lines.append(line.rstrip('\n'))
+
+bug = [l for l in lines[1].split()]
+DEBUG(bug)
+re = [l for l in lines[2].split()]
+DEBUG(re)
+res = ""
+for l in lines[3]:
+    if l.lower() in bug:
+        if l.isupper():
+            res = res + re[bug.index(l.lower())].upper()
+        else:
+            res = res + re[bug.index(l.lower())]
+    else:
+        res = res + l
+
+print(res)
+
+# exercice 5

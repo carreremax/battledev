@@ -51,3 +51,40 @@ for i in range(len(vals[:-1])):
 if val_n == target and (x != "INF"):
     x += 1
 print(x)
+
+# region 2018 ex crepes:
+import sys
+import itertools as it
+
+lines = []
+for line in sys.stdin:
+    lines.append(line.rstrip('\n'))
+
+pile = [int(i) for i in lines[0:]]
+
+
+def mod_pile(pile, val):
+    pile2 = pile.copy()
+    pile2 = pile[:val]
+    pile2.reverse()
+    pile2 = pile2 + pile[val:]
+    return pile2
+
+
+answer = pile.copy()
+answer.sort()
+
+ret = 7
+if pile == answer:
+    ret = 0
+vals = [2, 3, 4, 5, 6]
+
+comb = it.product(vals, repeat=6)
+for i, c in enumerate(comb):
+    pile_t = pile.copy()
+    for j, pos in enumerate(c):
+        pile_t = mod_pile(pile_t, pos)
+        if pile_t == answer:
+            if j + 1 < ret:
+                ret = j + 1
+print(ret)

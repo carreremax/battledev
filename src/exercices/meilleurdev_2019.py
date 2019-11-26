@@ -57,16 +57,14 @@ for line in sys.stdin:
     lines.append(line.rstrip('\n'))
 
 bug = [l for l in lines[1].split()]
-DEBUG(bug)
 re = [l for l in lines[2].split()]
-DEBUG(re)
 res = ""
 for l in lines[3]:
     if l.lower() in bug:
         if l.isupper():
             res = res + re[bug.index(l.lower())].upper()
         else:
-            res = res + re[bug.index(l.lower())]
+            res = res + re[bug.index()]
     else:
         res = res + l
 

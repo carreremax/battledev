@@ -73,3 +73,47 @@ for l in lines[3]:
 print(res)
 
 # exercice 5
+import sys
+
+lines = []
+for line in sys.stdin:
+    lines.append(line.rstrip('\n'))
+
+
+def DEBUG(to_print):
+    sys.stderr.write(str(to_print) + '\n')
+
+
+n_part = int(lines[0])
+begin = []
+end = []
+for l in lines[1:]:
+    begin.append(int(l.split()[0]))
+    end.append(int(l.split()[1]))
+
+begin.sort()
+end.sort()
+
+b = 0
+e = 0
+nb_part = 0
+max_part = 0
+for i in range(len(begin) + len(end)):
+    if b == len(begin):
+        break
+    if e == len(end):
+        for j in range(b, len(begin)):
+            nb_part += 1
+        if nb_part > max_part:
+            max_part = nb_part
+        break
+    if begin[b] < end[e]:
+        nb_part += 1
+        b += 1
+    else:
+        nb_part -= 1
+        e += 1
+    if nb_part > max_part:
+        max_part = nb_part
+print(max_part)
+
